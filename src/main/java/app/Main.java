@@ -34,7 +34,7 @@ public final class Main {
 	static Rotor rotor7;
 	static Rotor rotor8;
 
-	final int numAlpha = 26;
+	
 	
 	static {
 		buildRotors();

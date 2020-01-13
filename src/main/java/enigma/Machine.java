@@ -6,6 +6,7 @@ public class Machine {
 	private Rotor middleRotor;
 	private Rotor rightRotor;
 	private Reflector reflector;
+	final static int numAlpha = 26;
 
 	public void initRotors(Reflector reflector, Rotor left, Rotor middle, Rotor right) {
 		this.reflector = reflector;
