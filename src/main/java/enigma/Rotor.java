@@ -3,8 +3,8 @@ package enigma;
 public class Rotor {
 
     private int position;
-    private int[] cipher = new int[26];
-    private int[] bcipher = new int[26];
+    private int[] cipher = new int[numAlpha];
+    private int[] bcipher = new int[numAlpha];
     private int notch1 = -1;
     private int notch2 = -1;
 
@@ -18,8 +18,8 @@ public class Rotor {
     
 	public static Rotor rotorFactory(String str, String notches){
 		char[] s = str.trim().replace(" ", "").toCharArray();
-		int[] cipher = new int[26];
-		for (int i = 0; i< 26; i++){
+		int[] cipher = new int[numAlpha];
+		for (int i = 0; i< numAlpha; i++){
 			cipher[i] = toIndex(s[i]);
 		}
 		s = notches.trim().replace(" and ", "").toCharArray();
@@ -45,15 +45,15 @@ public class Rotor {
 	}
 
     public int convertForward(int p) {
-        return (cipher[(p+position)%26]-position)%26;
+        return (cipher[(p+position)%numAlpha]-position)%numAlpha;
     }
 
     public int convertBackward(int e) {
-        return (bcipher[(e+position)%26]-position)%26;
+        return (bcipher[(e+position)%numAlpha]-position)%numAlpha;
     }
     
     public void advance() {
-        position = (position+1) % 26;
+        position = (position+1) % numAlpha;
     }
     
     protected boolean atNotch() {
@@ -69,7 +69,7 @@ public class Rotor {
     }
     
 	private void createBCipher() {
-		for(int i =0; i<26; i++)
+		for(int i =0; i<numAlpha; i++)
 			bcipher[cipher[i]] = i;
 	}
 
